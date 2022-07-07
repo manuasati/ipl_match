@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+    
+<head>
+	<title>Signup</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			background-image: url(/static/images/ipl_bg.jpeg);
+			background-size: cover;
+		}
+		html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			background: #7abecc !important;
+		}
+		.user_card {
+			width: 350px;
+			margin-top: auto;
+			margin-bottom: auto;
+			background: rgba(0,0,0,0.5);
+			position: relative;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding: 10px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			border-radius: 5px;
+			margin-left: 5px;
+			margin-right: 5px;
+		}
+
+		.form_container {
+			margin-top: 20px;
+		}
+
+		#form-title{
+			color: #fff;
+		}
+		.login_btn {
+			width: 100%;
+			background: #f7ba5b !important;
+			color: white !important;
+		}
+		.login_btn:focus {
+			box-shadow: none !important;
+			outline: 0px !important;
+		}
+		.login_container {
+			padding: 0 2rem;
+		}
+		.input-group-text {
+			background: #f7ba5b !important;
+			color: white !important;
+			border: 0 !important;
+			border-radius: 0.25rem 0 0 0.25rem !important;
+		}
+		.input_user,
+		.input_pass:focus {
+			box-shadow: none !important;
+			outline: 0px !important;
+		}
+		.xdp-ipl-top-text {
+			color: #f8f9fa;
+			font-size: 22px;
+			font-weight: 600;
+			margin-left: 32%;
+			width: 158px;
+			background: rgba(0, 0, 0, 0.3);
+			padding: 4px;
+			border-radius: 5px;
+			position: absolute;
+		}
+		.alert.alert-danger {
+			top: 47px;
+			padding: 2px;
+			width: 50%;
+			margin: auto;
+			text-align: center;	
+		}
+
+		.xdp-engange-title-text {
+    		color: #67f7e6;
+			font-size: 50px;
+			font-weight: 600;
+			width: 80%;
+			padding: 4px;
+			border-radius: 5px;
+			position: absolute;
+			top: 55px;
+			text-align: center;
+			font-family: cursive;
+		}
+
+	</style>
+
+</head>
+<body>
+
+	<span style="position: relative;float: right;right: 10px;top: 10px;">
+		<a href="/" style="color: white;text-decoration: underline;">Leader board</a>
+	</span>
+
+	
+	<div class="container h-100">
+		<div class="xdp-ipl-top-text">
+			<span>XDP IPL - 2020</span>
+		</div>
+
+		<div class="xdp-engange-title-text"> 
+			Engage in IPL 2020 the XDP way  !!
+		   </div>
+   
+
+		{% if form.errors %}
+			<div class="alert alert-danger">
+				{{form.errors}}
+			</div>
+		{% endif %}
+
+		<div class="d-flex justify-content-center h-100">
+			<!-- <div class="user_card" style="background:transparent ;"> 
+				<img src="/static/images/xdp_ipl_logo.jpg" style="width: 270px;"/> 
+			</div> -->
+			<div class="user_card">
+				<div class="d-flex justify-content-center">
+					<h3 id="form-title">REGISTER ACCOUNT</h3>
+				</div>
+				<div class="d-flex justify-content-center form_container">
+
+					<form method="POST" action="">
+						{% csrf_token %}
+						<div class="input-group mb-3"  style="display: none;">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+							{{form.username}}
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-envelope-square"></i></span>
+							</div>
+							{{form.email}}
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-key"></i></span>
+							</div>
+							{{form.password1}}
+						</div>
+						
+						<div class="input-group mb-2" style="display: none;">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-key"></i></span>
+							</div>
+							{{form.password2}}
+						</div>
+
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-building"></i></span>
+							</div>
+							{{form.department}}
+						</div>
+
+				   		<div class="d-flex justify-content-center mt-3 login_container">
+				 			<input class="btn login_btn" type="submit" value="Register Account">
+				   		</div>
+					</form>
+				</div>
+
+				<div class="mt-4">
+					<div class="d-flex justify-content-center links" style="color: white;">
+						You already have an account? <a href="{% url 'login' %}" class="ml-2">Login</a>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<script>
+						/* Because i didnt set placeholder values in forms.py they will be set here using vanilla Javascript
+		//We start indexing at one because CSRF_token is considered and input field 
+		 */
+
+		//Query All input fields
+		var form_fields = document.getElementsByTagName('input')
+		form_fields[2].placeholder='Email..';
+		form_fields[3].placeholder='Enter password...';
+
+
+		for (var field in form_fields){	
+			form_fields[field].className += ' form-control'
+		}
+
+
+		$('input[name="email"]').change(function() {
+			$('input[name="username"]').val($(this).val());
+		});
+		$('input[name="password1"]').change(function() {
+			$('input[name="password2"]').val($(this).val());
+		});
+	</script>
+</body>
+</html>

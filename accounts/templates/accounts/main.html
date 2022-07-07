@@ -1,0 +1,162 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>XDP - IPL 2020</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+
+</head>
+
+<body>
+  <div class="main">
+    {%  include 'accounts/navbar.html' %}
+    <div class="container-fluid">
+      {% block content %}
+
+
+
+      {% endblock %}
+    </div>
+    <hr>
+    <h5 style="text-align: center;"> </h5>
+  </div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"/ type=""> </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<script>
+  //switch board
+  jQuery(".tab-link-my-board").click(function () {
+    jQuery(".my_board").removeClass("hideboard");
+    jQuery(".leader_board").addClass("hideboard");
+  });
+
+  jQuery(".tab-link-leader-board").click(function () {
+    jQuery(".leader_board").removeClass("hideboard");
+    jQuery(".my_board").addClass("hideboard");
+  });
+
+  //switch mathces
+  jQuery(".match-switch span").click(function () {
+    jQuery(".match-switch span").removeClass("match-switch-active");
+    jQuery(this).addClass("match-switch-active");
+    if (jQuery(this).attr('id') == "played") {
+      jQuery(".played_matcehs_list").removeClass('hide');
+      jQuery(".fixtures_matcehs_list").addClass('hide');
+    }
+    else {
+      jQuery(".played_matcehs_list").addClass('hide');
+      jQuery(".fixtures_matcehs_list").removeClass('hide');
+    }
+  });
+
+  //filter department leaders
+  $("#dept_filter").on("change", function () {
+    if ($(this).val() == "all") {
+      $(".leader_rank").show();
+      $.each($(".leader_rank"), function (index, value) {
+        $(this).find(".rank").html(index + 1);
+      });
+    } else {
+      $(".leader_rank").hide();
+      $("." + $(this).val()).show();
+      $.each($("." + $(this).val()), function (index, value) {
+        $(this).find(".rank").html(index + 1);
+      });
+    }
+  });
+
+  //save guess
+  jQuery(".guess").click(function () {
+    p = jQuery(this).parent();
+    gp = p.parent();
+    gp.find(".guess_input").removeClass("hide");
+    gp.find(".guess_text").addClass("hide");
+    p.find(".btn-guess").removeClass("hide");
+
+    jQuery(".guess-alert-message").addClass("hide");
+
+    jQuery(this).addClass("hide");
+  });
+
+  jQuery(".btn-guess").click(function () {
+    jQuery(".guess-alert-message").addClass("hide");
+    
+    p = jQuery(this).parent();
+    gp = p.parent();
+
+    match_id = p.attr('match_id');
+    team_id = $('input:radio[name=winner-'+match_id+']:checked').val();
+    if (!team_id){
+      gp.find(".alert-danger").html("Please guess winner!").removeClass("hide");
+      return false;
+    }
+
+    anyone_is_empty = false;
+    $(gp.find("input.input_guess_number")).each(function () {
+      if ($(this).val() == "") {
+        gp.find(".alert-danger").html("Please enter all your gusses!").removeClass("hide");
+        anyone_is_empty = true;
+      }
+    });
+    if (anyone_is_empty){return false;}
+
+    $(gp.find("input.input_guess_number")).each(function () {
+        $(this).parent().parent().find(".guess_text").html($(this).val());
+    });
+
+    gp.find(".guess_input").addClass("hide");
+    gp.find(".guess_text").removeClass("hide");
+    p.find(".guess").removeClass("hide");
+
+
+    jQuery(this).addClass("hide");
+
+    jQuery.ajax({
+      url: '/ajax/post-guess/',
+      data: {
+        'match_id': match_id,
+        'winner': team_id,
+        'winning_team_score': jQuery("#winning_team_score-"+match_id).val(),
+        'winner_total_sixes': jQuery("#winner_total_sixes-"+match_id).val(),
+        'winner_total_wickets': jQuery("#winner_total_wickets-"+match_id).val(),
+      },
+      dataType: 'json',
+      success: function (data) {
+        if (data.status == "success"){
+          gp.find(".alert-success").removeClass("hide");
+          setTimeout(function () {
+            jQuery(".alert-success").addClass("hide");
+          }, 5000);
+        }
+        else{
+          gp.find(".alert-danger").html(data.message).removeClass("hide");
+          setTimeout(function () {
+            window.location.href = "/";
+          }, 4000);
+        }
+
+      },
+      error: function (error) {
+        window.location.href = "/login";
+      }
+    });
+
+
+
+  });
+</script>
+
+</html>

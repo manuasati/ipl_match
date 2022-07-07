@@ -1,0 +1,214 @@
+
+{%  extends 'accounts/main.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="row">
+
+	<div class="col-md-12">
+		<!-- <h5>MATCHES:</h5> -->
+		<hr>
+		<div class="card card-body" style="width: 50%; margin: auto;">
+			<table class="table table-sm">
+				<tr>
+					<td></td>
+					<td>{{todays_match.scheduled_at}}</td>
+					<td></td>
+				</tr>
+				<tr>
+
+					<td>
+						<div style="margin-bottom: 5px;">
+							<img src="{% static 'images/teams_logo_icon/' %}{{todays_match.team1.code}}.png" style="height:35px;">
+							{{todays_match.team1}}
+						</div>
+					</td>
+					<td> Vs </td>
+					<td>
+						<div  style="margin-bottom: 15px;">
+							<img src="{% static 'images/teams_logo_icon/' %}{{todays_match.team2.code}}.png" style="height:35px;">
+							{{todays_match.team2}}
+						</div>
+					</td>
+				</tr>
+
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-6"  style="width: 50%; margin: auto;">
+		<div class="card card-body">
+			<table class="table table-sm">
+
+				{% for prediction in predictions %}
+					<tr>
+						<td>{{prediction.title}}</td>
+						<td> 
+							<input type="radio"> 
+							<span style="margin-bottom: 5px;">
+								<img src="/static/images/teams_logo_icon/MI.png" style="height:35px;">
+							</span> 
+							<input type="radio"> 
+							<span style="margin-bottom: 5px;">
+								<img src="/static/images/teams_logo_icon/MI.png" style="height:35px;">
+							</span> 
+							<input type="button" value="go">
+						</td>
+					</tr>
+				{% endfor %}
+
+				{% for prediction in predictions %}
+				<tr>
+					<td>{{prediction.title}}</td>
+					<td> 
+						<input> 						
+						<input type="button" value="go">
+					</td>
+				</tr>
+			{% endfor %}
+
+		
+			</table>
+
+		</div>
+	</div>
+
+</div>
+
+
+
+
+<div class="row">
+	{% if my_scores %}
+	<div class="col-md-8">
+		<h5>My Board</h5>
+		<hr>
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Match</th>
+					<th> </th>
+					<th></th>
+					<th>Prediction</th>
+					<th>score</th>
+				</tr>
+
+				{% for users_score in my_scores %}
+					<tr>
+						<td>{{users_score.match.team1}} Vs {{users_score.match.team2}}</td>
+						<td>@{{users_score.match.scheduled_at}}</td>
+						<td>{{users_score.prediction.title}}</td>
+						<td>{{users_score.guess}}</td>
+						<td>{{users_score.point}}</td>
+					</tr>
+				{% endfor %}
+				<tr>
+					<td> </td>
+					<td> </td>
+					<td> Total </td>
+					<td style="font-weight:bold;"> 8 </td>
+				</tr>
+
+		
+			</table>
+
+		</div>
+	</div>
+	{% endif %}
+
+	<div class="col-md-4">
+		<h5>Leader Board</h5>
+		<hr>
+		<div class="card card-body">
+			
+			<table class="table table-sm">
+				<tr>
+					<th> </th>
+					<th>Name</th>
+					<th>Department</th>
+					<th>score</th>
+				</tr>
+
+				{% for users_score in users_scores %}
+					<tr>
+						<!-- <td><img src="{% static 'images/teams_logo_icon/' %}{{team.code}}.png" style="height:35px;"></td> -->
+						<td>
+							<!-- <div style="background-color: #c0e9f3;text-align: center;border-radius: 20px;
+								width: 35px;height: 35px;padding: 4px 0 0 0;font-weight: 600;"> 
+								{{user.email.0|upper}} 
+							</div> -->
+						</td>
+						<td>{{users_score.profile}}</td>
+						<td>{{users_score.profile.department}}</td>
+						<td>{{users_score.point}}</td>
+					</tr>
+				{% endfor %}
+
+		
+			</table>
+		</div>
+	</div>
+
+</div>
+
+<div class="row">
+	<div class="col-md-5">
+		<h5>MATCHES:</h5>
+		<hr>
+		<div class="card card-body">
+			<table class="table table-sm">
+
+				{% for match in matches %}
+					<tr>
+						<td>
+							<div style="margin-bottom: 5px;">
+								<img src="{% static 'images/teams_logo_icon/' %}{{match.team1.code}}.png" style="height:35px;">
+								{{match.team1}}
+							</div>
+							<div  style="margin-bottom: 15px;">
+								<img src="{% static 'images/teams_logo_icon/' %}{{match.team2.code}}.png" style="height:35px;">
+								{{match.team2}}
+							</div>
+						</td>
+						<td>{{match.scheduled_at}}</td>
+					</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-7">
+		<h5>Teams</h5>
+		<hr>
+		<div class="card card-body">
+			
+			<table class="table table-sm">
+				<tr>
+					<th> </th>
+					<th>Name</th>
+					<th>code</th>
+					<th>score</th>
+				</tr>
+
+				{% for team in teams %}
+					<tr>
+						<td><img src="{% static 'images/teams_logo_icon/' %}{{team.code}}.png" style="height:35px;"></td>
+						<td>{{team}}</td>
+						<td>{{team.code}}</td>
+						<td>8</td>
+					</tr>
+				{% endfor %}
+
+		
+			</table>
+		</div>
+	</div>
+
+</div>
+
+
+{% endblock %}
+

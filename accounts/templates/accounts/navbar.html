@@ -1,0 +1,36 @@
+{% load static %}
+
+
+<style>
+  .hello-msg{
+    font-size: 18px;
+    color: #fff;
+    margin-right: 20px;
+    min-width: 120px;
+  }
+</style>
+
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+ <img src="{% static 'images/logo_xdp.png' %}" style="border-radius: 5px; height:40px;">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav" style="margin-left: 49%;">
+      <li class="nav-item active" style="font-size:20px; font-weight: 800;">
+        <a class="nav-link" href="{% url 'home' %}" style="color:#7accf7">XDP IPL - 2020</a>
+      </li>
+    </ul>
+  </div>
+
+  {% if request.user.is_authenticated %}
+    <span class="hello-msg">Hello, {{request.user.first_name}}</span>
+    <span ><a  class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
+  {% else %}
+  <span class="hello-msg"> </span>
+  <span ><a  class="hello-msg" href="{% url 'login' %}">Login</a></span>
+  {% endif %}
+
+</nav>

@@ -1,0 +1,656 @@
+<style>
+	body {
+		/* background-image: url('/static/images/ipl_leader_page.jpg'); */
+		background-image: url('/static/images/2.jpg');
+		background-size: auto;
+		position: relative;
+	}
+
+	.overlayer {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.5);
+		z-index: 1;
+	}
+
+	.main {
+		position: relative;
+		z-index: 2;
+	}
+
+	section.sectionR2 h2 {
+		color: #ff5959;
+		text-align: center;
+		margin: 10px 0;
+		font-size: 31px;
+		text-transform: uppercase;
+		font-weight: 600;
+	}
+
+	.PredictionBox {
+		background-color: rgb(0 0 0 / 50%);
+		color: #fff;
+		font-size: 18px;
+		padding: 0px;
+		border-radius: 10px;
+		max-width: 50%;
+		margin: 0 auto;
+	}
+
+	.PredictionR {
+		display: flex;
+		flex-flow: row wrap;
+		align-items: center;
+		border-bottom: 1px solid #f8f9fa;
+		padding: 3px 15px;
+	}
+
+	.activeUser {
+		background: #aaffa6;
+		color: green;
+	}
+
+	.PredictionR:last-child {
+		border: 0;
+	}
+
+	.PredictionRHead {
+		background: rgba(122, 204, 247, 0.5);
+		border-top-left-radius: 5px;
+		border-top-right-radius: 5px;
+		padding: 10px 15px;
+	}
+
+	.PredictionCol {
+		width: 33%;
+	}
+
+	.PredictionCol:nth-child(1) {
+		width: 15%;
+	}
+
+	.PredictionCol:nth-child(2) {
+		width: 50%;
+	}
+
+	.PredictionCol:nth-child(3) {
+		width: 23%;
+	}
+
+	.PredictionCol:nth-child(4) {
+		width: 9%;
+	}
+
+	.PredictionCol:nth-child(5) {
+		width: 3%;
+	}
+
+	.PredictionBox input[type="button"] {
+		background-color: #79cbf5;
+		border: 2px solid #74bee4;
+		border-radius: 5px;
+		width: 80px;
+		padding: 5px;
+		margin: 0;
+		color: #fff;
+		font-size: 20px;
+		line-height: normal;
+		text-transform: uppercase;
+	}
+
+	.PredictionBox input[type="text"] {
+		width: 145px;
+	}
+
+	.PredictionCol img {
+		width: 30px;
+	}
+
+
+
+
+
+
+
+
+
+	section.sectionR3 h2 {
+		color: #ff5959;
+		text-align: center;
+		margin: 10px 0;
+		font-size: 31px;
+		text-transform: uppercase;
+		font-weight: 600;
+	}
+
+	section.sectionR3 .PredictionBox {
+		background-color: rgb(0 0 0 / 50%);
+		color: #fff;
+		font-size: 18px;
+		padding: 0px;
+		border-radius: 10px;
+		max-width: 96%;
+		margin: 0 auto;
+	}
+
+	section.sectionR3 .PredictionR {
+		display: flex;
+		flex-flow: row wrap;
+		align-items: center;
+		border-bottom: 1px solid #f8f9fa;
+		padding: 3px 15px;
+	}
+
+	section.sectionR3 .PredictionR:last-child {
+		border: 0;
+	}
+
+	section.sectionR3 .PredictionRHead {
+		background: rgba(122, 204, 247, 0.5);
+		border-top-left-radius: 5px;
+		border-top-right-radius: 5px;
+		padding: 10px 15px;
+	}
+
+	section.sectionR3 .PredictionCol {
+		width: 20%;
+		text-align: center;
+	}
+
+	section.sectionR3 .PredictionCol:nth-child(1) {
+		width: 30%;
+	}
+
+	section.sectionR3 .PredictionCol:nth-child(2) {
+		width: 14%;
+	}
+
+	section.sectionR3 .PredictionCol:nth-child(3) {
+		width: 15%;
+	}
+
+	section.sectionR3 .PredictionCol:nth-child(4) {
+		width: 19%;
+	}
+
+	section.sectionR3 .PredictionCol:nth-child(5) {
+		width: 19%;
+	}
+
+	section.sectionR3 .PredictionCol:nth-child(6) {
+		width: 3%;
+	}
+
+	section.sectionR3 .PredictionBox input[type="button"] {
+		background-color: #79cbf5;
+		border: 1px solid #74bee4;
+		border-radius: 0;
+		width: 40px;
+		padding: 5px;
+		margin: 0;
+		color: #fff;
+		font-size: 14px;
+		line-height: normal;
+		text-transform: uppercase;
+	}
+
+	section.sectionR3 .PredictionBox input[type="text"] {
+		width: 40px;
+		padding: 0 4px;
+		margin: 0 -5px;
+		background-color: transparent;
+		border: 1px solid #ffffff;
+		height: 30px;
+		color: white;
+		font-size: 15px;
+	}
+
+	.todayMatch {
+		display: flex;
+		flex-flow: row wrap;
+		align-items: center;
+		justify-content: center;
+		font-size: 16px;
+		text-align: center;
+		margin: 0 17px 0 0;
+	}
+
+	.todayMatchCol {
+		width: 33%;
+	}
+
+	section.sectionR3 .todayMatchCol:nth-child(1) {
+		width: 40%;
+	}
+
+	section.sectionR3 .todayMatchCol:nth-child(2) {
+		width: 20%;
+	}
+
+	section.sectionR3 .todayMatchCol:nth-child(3) {
+		width: 40%;
+	}
+
+	.todayMatchCol.Versus_icon img {
+		width: 70px;
+	}
+
+	.hideboard {
+		display: none !important;
+	}
+
+	.tab_link {
+		text-align: center;
+		color: white;
+		margin: -11px -4px 0 0px;
+		float: right;
+		width: 2%;
+	}
+
+	.tab_link div {
+		width: 120px;
+		text-decoration: underline;
+		cursor: pointer;
+	}
+
+	.match_heading {
+		margin: -27px 0 0 -45px;
+		position: absolute;
+	}
+
+	.match-switch {
+		background: #358790;
+		border-top-right-radius: 10px;
+		margin: 0;
+		text-align: center;
+		position: absolute;
+		width: 27%;
+		padding: 3px;
+		top: 22px;
+		font-size: 14px;
+		border-top-left-radius: 10px;
+	}
+
+	.match-switch span {
+		cursor: pointer;
+		width: 49%;
+		text-align: center;
+		text-transform: uppercase;
+	}
+
+	.played-tab {
+		float: left;
+		color: #c1c8c7;
+	}
+
+	.fixture-tab {
+		float: right;
+		color: #c1c8c7;
+	}
+
+	.match-switch-active {
+		background: #2a4c50;
+		border-radius: 10px;
+		color: #63e9e5;
+	}
+
+	.hide {
+		display: none !important;
+	}
+
+	.your_guess {
+		font-zise: 10px;
+
+	}
+
+	.input_guess_number {
+		background: transparent;
+		border: 1px solid #fff;
+		height: 28px;
+		width: 55px;
+		color: white;
+		font-size: 16px;
+		padding: 3px;
+	}
+
+	span.alert.alert-success.guess-alert-message {
+		position: absolute;
+		padding: 1px;
+		font-size: 12px;
+		width: 20%;
+		margin: 0 35%;
+	}
+
+	span.alert.alert-danger.guess-alert-message {
+		position: absolute;
+		padding: 1px;
+		font-size: 12px;
+		width: 20%;
+		margin: 0 35%;
+	}
+
+	.pred_rule_info {
+		font-size: 10px;
+		display: block;
+		position: absolute;
+		font-style: italic;
+		color: #ffc107;
+		margin: -5px 0px 0 -10px;
+		width: 16%;
+	}
+
+	.ongoing-match-message {
+		margin: 0 35%;
+		color: red;
+		background: #b6eb98;
+		border-radius: .25rem;
+		position: absolute;
+		padding: 1px;
+		font-size: 12px;
+		width: 20%;
+	}
+</style>
+
+<div class="overlayer"></div>
+
+{%  extends 'accounts/main.html' %}
+{% load static %}
+{% load accounts %}
+
+{% block content %}
+
+<div class="row leader_board">
+	<div class="col-md-12">
+		<section class="sectionR2">
+			<div class="tab_link">
+				{% if request.user.is_authenticated %}
+				<div class="float-right tab-link-my-board">my board</div>
+				{% else %}
+				<div class="float-right"> <span><a class="hello-msg" href="{% url 'login' %}">my board</a></span> </div>
+				{% endif %}
+			</div>
+
+			<h2 style="font-family: 'Stylish', sans-serif;">
+				Leader Board
+			</h2>
+			<div class="col-md-12">
+				<div class="PredictionBox">
+					<div style="margin-bottom: 10px;">
+						<select id="dept_filter" name="dept_id" required="" class=" form-control">
+							<option value="all">All Departments</option>
+							{% if profile %}
+							<option value="{{profile.department.id}}">{{profile.department}} (My Department)</option>
+							{% endif %}
+							{% for dept in departments %}
+							<option value="{{dept.id}}" {%if dept.id == dept_id %}selected{%endif%}>{{dept.name}}
+							</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+
+				<div class="PredictionBox">
+					<div class="PredictionR PredictionRHead">
+						<div class="PredictionCol"><strong>#Rank</strong></div>
+						<div class="PredictionCol"><strong>Name</strong></div>
+						<div class="PredictionCol"><strong>Department</strong></div>
+						<div class="PredictionCol"><strong>Points</strong></div>
+					</div>
+					{% for profile in users %}
+					<div
+						class="leader_rank {{profile.department.id}} PredictionR {% if request.user.email == profile.user.email%}activeUser{%endif%}">
+						<div class="PredictionCol rank">{{forloop.counter}}</div>
+						<div class="PredictionCol">
+							{% if profile.user.first_name or profile.user.last_name %}
+							{{profile.user.first_name}} {{profile.user.last_name}}
+							{% else %}
+							{{profile.user.email}}
+							{% endif %}
+						</div>
+						<div class="PredictionCol">{{profile.department}}</div>
+						<div class="PredictionCol">{{profile.total_points|default_if_none:"0"}}</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</section>
+
+
+	</div>
+</div>
+
+{% if request.user.is_authenticated %}
+<div class="row my_board hideboard">
+	<div class="col-md-12">
+		<section class="sectionR3">
+			<div class="tab_link">
+				<div class="float-right tab-link-leader-board">
+					<a href="/" style="color: white"> leader board</a>
+				</div>
+			</div>
+			<h2 style="font-family: 'Stylish', sans-serif;">
+				My Board
+			</h2>
+			<div class="col-md-12">
+
+				<div class="PredictionBox">
+					<div class="PredictionR PredictionRHead">
+						<div class="PredictionCol">
+							<strong class="match_heading">Matches</strong>
+							<div class="match-switch">
+								<span class="played-tab" id="played">Played</span>
+								<span class="fixture-tab match-switch-active" id="fixtures">Upcoming</span>
+							</div>
+						</div>
+						{% for prediction in predictions %}
+						<div class="PredictionCol">
+							<strong>{{prediction.title}}</strong>
+							<div class="pred_rule_info" title="{{prediction.rule_explanation}}" >{{prediction.rule_explanation|truncatechars:40}}</div>
+						</div>
+						{% endfor %}
+						<div class="PredictionCol"><strong> </strong></div>
+					</div>
+
+					{% for match in matches_played %}
+					<div class="PredictionR played_matcehs_list hide">
+
+						<div class="PredictionCol">
+							<div style="border-right: 1px solid #f8f9fa;">
+								<div> {{match.scheduled_at}} </div>
+								<div class="todayMatch">
+									<div class="todayMatchCol">
+										<img src="{% static 'images/teams_logo_icon/' %}{{match.team1.code}}.png">
+										<h6>{{match.team1}}</h6>
+									</div>
+									<div class="todayMatchCol Versus_icon">
+										<img src="/static/images/vs.png">
+									</div>
+									<div class="todayMatchCol">
+										<img src="{% static 'images/teams_logo_icon/' %}{{match.team2.code}}.png">
+										<h6>{{match.team2}}</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						{% for prediction in predictions %}
+						<div class="PredictionCol">
+							{% if prediction.applied_to == 1 %}
+							{% if match.team1.id == match.result.winner %}
+							<span><img src="{% static 'images/teams_logo_icon/' %}{{match.team1.code}}.png" /></span>
+							{% else %}
+							<span><img src="{% static 'images/teams_logo_icon/' %}{{match.team2.code}}.png" /></span>
+							{% endif %}
+
+
+							{% if match.user_guess.winner%}
+							<span class="your_guess" style="font-size: 12px; font-style: italic;">
+								<br />you guessed:
+								{% if match.team1.id == match.user_guess.winner %}
+								<span><img
+										src="{% static 'images/teams_logo_icon/' %}{{match.team1.code}}.png" /></span>
+								{% endif %}
+								{% if match.team2.id == match.user_guess.winner %}
+								<span><img
+										src="{% static 'images/teams_logo_icon/' %}{{match.team2.code}}.png" /></span>
+								{% endif %}
+							</span>
+							{% endif %}
+
+							{% else %}
+							<span>{{match.result|parse_result_value:prediction.filed_to_refer}}</span>
+
+							{% if match.user_guess.winner%}
+							<span class="your_guess" style="font-size: 12px; font-style: italic;">
+								<br />you guessed:
+								{% if match.user_guess %}
+								<span>{{match.user_guess|parse_result_value:prediction.filed_to_refer}}</span>
+								{% else %}
+								<span> - </span>
+								{% endif %}
+							</span>
+							{% endif %}
+							{% endif %}
+						</div>
+						{% endfor %}
+						<div class="PredictionCol"><strong> </strong></div>
+
+					</div>
+					{% endfor %}
+
+					{% for match in matches_ongoing %}
+					<div class="PredictionR fixtures_matcehs_list">
+						<div class="PredictionCol">
+							<span class="ongoing-match-message"> Match is inprogress!</span>
+
+							<div style="border-right: 1px solid #f8f9fa;">
+								<div> {{match.scheduled_at}} </div>
+								<div class="todayMatch">
+									<div class="todayMatchCol">
+										<img src="{% static 'images/teams_logo_icon/' %}{{match.team1.code}}.png">
+										<h6>{{match.team1}}</h6>
+									</div>
+									<div class="todayMatchCol Versus_icon">
+										<img src="/static/images/vs.png">
+									</div>
+									<div class="todayMatchCol">
+										<img src="{% static 'images/teams_logo_icon/' %}{{match.team2.code}}.png">
+										<h6>{{match.team2}}</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						{% for prediction in predictions %}
+						<div class="PredictionCol">
+							{% if prediction.applied_to == 1 %}
+								<span class="your_guess" style="font-size: 12px; font-style: italic;">
+									<br />you guessed:
+									{% if match.team1.id == match.user_guess.winner %}
+									<span><img
+											src="{% static 'images/teams_logo_icon/' %}{{match.team1.code}}.png" /></span>
+									{% endif %}
+									{% if match.team2.id == match.user_guess.winner %}
+									<span><img
+											src="{% static 'images/teams_logo_icon/' %}{{match.team2.code}}.png" /></span>
+									{% endif %}
+								</span>
+							{% else %}
+								<span class="your_guess" style="font-size: 12px; font-style: italic;">
+									<br />you guessed:
+									{% if match.user_guess %}
+									<span>{{match.user_guess|parse_result_value:prediction.filed_to_refer}}</span>
+									{% else %}
+									<span> - </span>
+									{% endif %}
+								</span>
+							{% endif %}
+
+						</div>
+						{% endfor %}
+						<div class="PredictionCol" match_id="{{match.id}}">
+							<span class="guess" style="text-decoration: underline; cursor: pointer; font-size: 14px;">
+								
+							</span>							
+						</div>
+					</div>
+					{% endfor %}
+
+
+					{% for match in matches_fixtures %}
+					<div class="PredictionR fixtures_matcehs_list">
+						<div class="PredictionCol">
+							<span class="alert alert-success guess-alert-message hide">Your guess has been saved
+								successfully!</span>
+							<span class="alert alert-danger guess-alert-message hide">Your guess has been saved
+								successfully!</span>
+
+							<div style="border-right: 1px solid #f8f9fa;">
+								<div> {{match.scheduled_at}} </div>
+								<div class="todayMatch">
+									<div class="todayMatchCol">
+										<img src="{% static 'images/teams_logo_icon/' %}{{match.team1.code}}.png">
+										<h6>{{match.team1}}</h6>
+									</div>
+									<div class="todayMatchCol Versus_icon">
+										<img src="/static/images/vs.png">
+									</div>
+									<div class="todayMatchCol">
+										<img src="{% static 'images/teams_logo_icon/' %}{{match.team2.code}}.png">
+										<h6>{{match.team2}}</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						{% for prediction in predictions %}
+						<div class="PredictionCol">
+
+							{% if prediction.applied_to == 1 %}
+							<span>
+								<input type="radio" name="{{prediction.filed_to_refer}}-{{match.id}}"
+									value="{{match.team1.id}}"
+									{% if match.team1.id == match.user_guess.winner %}checked{% endif %}>
+							</span>
+							<span><img src="{% static 'images/teams_logo_icon/' %}{{match.team1.code}}.png" /></span>
+
+							<span>
+								<input type="radio" name="{{prediction.filed_to_refer}}-{{match.id}}"
+									value="{{match.team2.id}}"
+									{% if match.team2.id == match.user_guess.winner %}checked{% endif %}
+									style="margin-left: 20px;"></span>
+							<span><img src="{% static 'images/teams_logo_icon/' %}{{match.team2.code}}.png" /></span>
+							{% else %}
+							<span class="guess_input hide">
+								<input id="{{prediction.filed_to_refer}}-{{match.id}}" class="input_guess_number"
+									type="number" min="0" max="300"
+									value="{{match.user_guess|parse_result_value:prediction.filed_to_refer}}">
+							</span>
+							<span class="guess_text">
+								{{match.user_guess|parse_result_value:prediction.filed_to_refer}}
+							</span>
+							{% endif %}
+						</div>
+						{% endfor %}
+						<div class="PredictionCol" match_id="{{match.id}}">
+							<span class="guess" style="text-decoration: underline; cursor: pointer; font-size: 14px;">
+								guess </span>
+							<button class="btn-guess btn btn-info hide"
+								style="border-radius: 0;font-size: 13px;margin: -5px;padding: 3px 8px 6px 8px;"> Save
+								</span>
+						</div>
+					</div>
+					{% endfor %}
+
+				</div>
+			</div>
+		</section>
+
+
+	</div>
+</div>
+{% endif %}
+{% endblock %}
